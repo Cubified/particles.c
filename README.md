@@ -2,6 +2,10 @@
 
 A C implementation of [particles.js](https://github.com/cubified/particles.js) using ncurses.  Works very well as a terminal screensaver (a la `cmatrix`)
 
+### Demo
+
+![particles.c demo](https://github.com/cubified/particles.c/blob/master/demo.mp4)
+
 ### Building and Running
 
 Assuming `libncurses` is installed, simply run:
