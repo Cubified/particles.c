@@ -16,7 +16,7 @@ Which should produce a binary named `particles`.  Additionally, this binary can 
 
 All particles hold the following properties:
 
-```
+```c
 typedef struct particle {
   char type;
 

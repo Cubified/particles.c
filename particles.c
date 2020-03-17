@@ -128,7 +128,7 @@ void particle_update(particle *p, particle **sim, int flip){
   }
 
   /* Gravitation */
-  for(i=0;i<N_PARTICLES;i++){
+  PARTICLES_FOREACH(){
     if(sim[i] != p){
       cmp = sim[i];
       r = dist(
@@ -142,6 +142,12 @@ void particle_update(particle *p, particle **sim, int flip){
       if(r <= MAX_RADIUS){
         f_net_x += sign(cmp->pos_x-p->pos_x)*GRAVITATIONAL_CONSTANT*particle_force(p->type, cmp->type)*flip/r;
         f_net_y += sign(cmp->pos_y-p->pos_y)*GRAVITATIONAL_CONSTANT*particle_force(p->type, cmp->type)*flip/r;
+        /*
+         * This is a slightly different approach to gravitation which avoids the discontinuity due to the
+         *   sign() function
+         * f_net_x += GRAVITATIONAL_CONSTANT*particle_force(p->type, cmp->type)*flip/(cmp->pos_x-p->pos_x);
+         * f_net_y += GRAVITATIONAL_CONSTANT*particle_force(p->type, cmp->type)*flip/(cmp->pos_y-p->pos_y);
+        */
       }
     }
   }
@@ -203,10 +209,20 @@ void render_draw(particle **ps){
       (int)p->pos_y_last,
       ' '
     );
+    mvaddch(
+      (int)p->pos_x_last,
+      (int)p->pos_y_last-1,
+      ' '
+    );
     attron(COLOR_PAIR(p->type));
     mvaddch(
       (int)p->pos_x,
       (int)p->pos_y,
+      ' '
+    );
+    mvaddch(
+      (int)p->pos_x,
+      (int)p->pos_y-1,
       ' '
     );
   }
