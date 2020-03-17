@@ -4,7 +4,7 @@ A C implementation of [particles.js](https://github.com/cubified/particles.js) u
 
 ### Demo
 
-![particles.c demo](https://github.com/cubified/particles.c/blob/master/demo.mp4)
+[![particles.c demo](https://asciinema.org/a/JAsl8eHvT2lyIeSSBIm0k8O6y.svg)](https://asciinema.org/a/JAsl8eHvT2lyIeSSBIm0k8O6y)
 
 ### Building and Running
 
